@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM vs innerHTML Comparison</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Product Inventory</h1>
+    
+    <div class="controls">
+        <button id="btnInnerHTML">Load with innerHTML</button>
+        <button id="btnDirectDOM">Load with Direct DOM</button>
+    </div>
+
+    <p>Current Method Used: <span id="currentMethod" class="method-label">None</span></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody id="productBody">
+            </tbody>
+    </table>
+
+    <div class="comparison-box">
+        <h2>Observation & Comparison</h2>
+        <section>
+            <h3>1. Code Readability</h3>
+            <ul>
+                <li><strong>innerHTML:</strong> Highly readable. It uses string templates that look like standard HTML, making it easy to visualize the layout.</li>
+                <li><strong>Direct DOM:</strong> Verbose. It requires manual steps for every element created (`createElement`, `textContent`, `appendChild`), which can look cluttered.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>2. Execution Behavior</h3>
+            <ul>
+                <li><strong>innerHTML:</strong> Replaces the entire content. The browser must re-parse the string into DOM nodes. It clears any event listeners previously attached to the children.</li>
+                <li><strong>Direct DOM:</strong> More efficient for updates. You create nodes in memory and attach them. It is inherently safer against XSS because it treats data as text, not as HTML to be parsed.</li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
